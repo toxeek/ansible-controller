@@ -24,6 +24,10 @@ echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
 $(which gcloud) init
+
+# download ansible galaxy roles
+# ntp role
+$(which ansible-galaxy) install geerlingguy.ntp
  
 echo "[+] now cofigure git config --global user.name my_name && git config user.email my@email" 
 echo "[+] log out then in, or run:  source ~/.bashrc"
