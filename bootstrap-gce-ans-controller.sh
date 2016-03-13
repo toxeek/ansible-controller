@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# @ Yospace - All rights reserved.
-
 # bootstrap for ansible on GCE.
 
 [ "$UID" -ne "0" ] && echo "you are not root." >&2 && exit 1
