@@ -24,7 +24,11 @@ echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
 $(which gcloud) init
+ 
+echo "[+] now cofigure git config --global user.name my_name && git config user.email my@email" 
+echo "[+] log out then in, or run:  source ~/.bashrc"
 
+echo "[+] Done." 
 
-echo "[+] Done." && exit 0
+exit 0
 
