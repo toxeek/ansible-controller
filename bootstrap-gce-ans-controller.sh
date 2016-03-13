@@ -20,7 +20,7 @@ echo "[+] install python and dependencies .."
 $YUM -y install python python-devel python-pip curl >/dev/null
 echo "[+] install apache-libcloud dependency .."
 $(which pip) -y install apache-libcloud
-echo "[+] install GCE gcloud .."
+echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
 $(which gcloud) init
