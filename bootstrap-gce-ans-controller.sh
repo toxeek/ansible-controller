@@ -13,13 +13,13 @@ YUM=$(which yum)
 echo "[+] update yum .."
 $YUM -y update yum >/dev/null  
 echo "[+] update and upgrade local packages .."
-$YUM -y update >/dev/null && $YUM -y upgrade >/dev/null
+$YUM -y update >/dev/null && $YUM -y upgrade 
 echo "[+] install epel-release .."
 $YUM -y install epel-release >/dev/null
 echo "[+] install python and dependencies .."
-$YUM -y install python python-devel python-pip curl >/dev/null
+$YUM -y install python python-devel python-pip curl git-core gcc 
 echo "[+] install apache-libcloud dependency .."
-$(which pip) -y install apache-libcloud
+$(which pip) install paramiko PyYAML jinja2 httplib2 apache-libcloud
 echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
