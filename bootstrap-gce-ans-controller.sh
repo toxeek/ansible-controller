@@ -43,7 +43,13 @@ $(which ansible-galaxy) install geerlingguy.ntp
 echo "[+] now cofigure git config --global user.name my_name && git config user.email my@email" 
 echo "[+] log out then in, or run:  source ~/.bashrc"
 echo "[+] ALSO DO NOT FORGET: gcloud init --console-only"
-echo "[+] make sure you select the correct project id, and note down the email address to use in the conf"
+echo "[+] make sure you select the correct project id"
+echo "[+] The email from this putput it is NOT the one to set up in the gce module, the one is in the developer console, service named google compute engine"
+echo "[+] make sure set PYTHONPATH in .bashrc to something like /usr/lib/python2.7/site-packages"
+echo "[+] create (as redundant but necessary task) the secrets.py file under PYTHONPATH"
+
+echo "[+] remember to run python >= 2.7 :)"
+
 echo "[+] Done." 
 
 exit 0
