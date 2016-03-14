@@ -31,7 +31,7 @@ cd /usr/local/src
 $(which git) clone git://github.com/ansible/ansible.git --recursive
 cd /usr/local/src/ansible
 $(which make) "rpm"
-$YUM localinstall "rpm-build"/ansible-*[0-9].noarch.rpm
+$YUM localinstall -y "rpm-build"/ansible-*[0-9].noarch.rpm
 # $(which pip) install git+https://github.com/ansible/ansible.git@v2_final#egg=ansible
 echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
