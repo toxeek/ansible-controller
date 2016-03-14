@@ -23,16 +23,13 @@ $YUM -y install python python-devel python-pip curl git-core gcc python-libcloud
 echo "[+] install apache-libcloud dependency .."
 $(which pip) install paramiko PyYAML jinja2 httplib2
 echo "[+] install apache-libcloud from github .."
-$YUM remove ansible apache-libcloud 
+$YUM -y remove ansible apache-libcloud 
 cd /usr/local/src
 $(which git) clone https://github.com/apache/libcloud
 cd libcloud
 $(which python) setup.py install
-echo "[+] installing ansible from github .."
-cd /usr/local/src
-$(which git) clone "git://github.com/ansible/ansible.git"
-cd ansible
-make install
+echo "[+] installing ansible from github with pip .."
+$(which pip) install git+https://github.com/ansible/ansible.git@v2_final#egg=ansible
 echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
