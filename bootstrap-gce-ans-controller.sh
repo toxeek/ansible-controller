@@ -34,7 +34,7 @@ $YUM localinstall -y "rpm-build"/ansible-*[0-9].noarch.rpm
 echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
-$(which gcloud) init
+#$(which gcloud) init
 
 # download ansible galaxy roles
 # ntp role
@@ -42,7 +42,8 @@ $(which ansible-galaxy) install geerlingguy.ntp
  
 echo "[+] now cofigure git config --global user.name my_name && git config user.email my@email" 
 echo "[+] log out then in, or run:  source ~/.bashrc"
-
+echo "[+] ALSO DO NOT FORGET: gcloud init --console-only"
+echo "[+] make sure you select the correct project id, and note down the email address to use in the conf"
 echo "[+] Done." 
 
 exit 0
