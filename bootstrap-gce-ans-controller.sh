@@ -17,7 +17,7 @@ $YUM -y update >/dev/null && $YUM -y upgrade
 echo "[+] install epel-release .."
 $YUM -y install epel-release >/dev/null
 echo "[+] install python and dependencies .."
-$YUM -y install python python-devel python-pip curl git-core gcc 
+$YUM -y install python python-devel python-pip curl git-core gcc python-libcloud
 echo "[+] install apache-libcloud dependency .."
 $(which pip) install paramiko PyYAML jinja2 httplib2 apache-libcloud
 echo "[+] install GCE SDK .."
