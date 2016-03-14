@@ -22,10 +22,8 @@ echo "[+] install apache-libcloud dependency .."
 $(which pip) install paramiko PyYAML jinja2 httplib2
 echo "[+] install apache-libcloud from github .."
 $YUM -y remove ansible apache-libcloud 
-cd /usr/local/src
-$(which git) clone https://github.com/apache/libcloud
-cd libcloud
-$(which python) setup.py install
+$(which pip) install pip --upgrade
+$(which pip) install apache-libcloud --upgrade
 echo "[+] installing ansible from github .."
 cd /usr/local/src
 $(which git) clone git://github.com/ansible/ansible.git --recursive
