@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # bootstrap for ansible on GCE.
+# it seems that ansible pem_file is broken on Ansible 2
+# we will install latest ansible from github not Yum, and also libcloud from github
 
 [ "$UID" -ne "0" ] && echo "you are not root." >&2 && exit 1
 
@@ -19,7 +21,18 @@ $YUM -y install epel-release >/dev/null
 echo "[+] install python and dependencies .."
 $YUM -y install python python-devel python-pip curl git-core gcc python-libcloud
 echo "[+] install apache-libcloud dependency .."
-$(which pip) install paramiko PyYAML jinja2 httplib2 apache-libcloud
+$(which pip) install paramiko PyYAML jinja2 httplib2
+echo "[+] install apache-libcloud from github .."
+$YUM remove ansible apache-libcloud 
+cd /usr/local/src
+$(which git) clone https://github.com/apache/libcloud
+cd libcloud
+$(which python) setup.py install
+echo "[+] installing ansible from github .."
+cd /usr/local/src
+$(which git) clone "git://github.com/ansible/ansible.git"
+cd ansible
+make install
 echo "[+] install GCE SDK .."
 $(which curl) "https://sdk.cloud.google.com" | bash
 exec -l $SHELL
