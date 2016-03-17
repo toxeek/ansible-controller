@@ -17,7 +17,7 @@ YUM=$(which yum)
 echo "[+] install epel-release .."
 $YUM -y install epel-release >/dev/null
 echo "[+] install python and dependencies .."
-$YUM -y install python python-devel python-pip asciidoc git rpm-build python2-devel curl gcc
+$YUM -y install python python-devel python-pip asciidoc git rpm-build python2-devel curl wget gcc
 echo "[+] install apache-libcloud dependency .."
 $(which pip) install paramiko PyYAML jinja2 httplib2
 echo "[+] install apache-libcloud from github .."
