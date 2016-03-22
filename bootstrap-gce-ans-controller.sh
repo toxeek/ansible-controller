@@ -4,7 +4,7 @@
 # it seems that ansible pem_file is broken on Ansible 2
 # we will install latest ansible from github not Yum, and also libcloud from github
 
-# prerequsites - git, better do a yum update && yum upgrade first too
+# prerequisites - git, better do a yum update && yum upgrade first too
 
 [ "$UID" -ne "0" ] && echo "you are not root." >&2 && exit 1
 
@@ -44,7 +44,7 @@ echo "[+] now cofigure git config --global user.name my_name && git config user.
 echo "[+] log out then in, or run:  source ~/.bashrc"
 echo "[+] ALSO DO NOT FORGET: gcloud init --console-only"
 echo "[+] make sure you select the correct project id"
-echo "[+] The email from this putput it is NOT the one to set up in the gce module, the one is in the developer console, service named google compute engine"
+echo "[+] The email from this output it is NOT the one to set up in the gce module, the one is in the developer console, service named google compute engine"
 echo "[+] make sure set PYTHONPATH in .bashrc to something like /usr/lib/python2.7/site-packages"
 echo "[+] create (as redundant but necessary task) the secrets.py file under PYTHONPATH"
 
