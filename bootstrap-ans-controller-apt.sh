@@ -34,8 +34,10 @@ find deb-build -name "ansible*deb" -exec dpkg -i '{}' \;
 me="$(who am i | awk '{print $1}')"
 chown -R $me ~/.ansible
 # we install aws-cli
+echo "[+] installing aws-cli and boto .."
 $(which pip) install awscli
 $(which pip) install --upgrade awscli
+$(which pip) install boto
 
 echo "[+] DOne."
 
