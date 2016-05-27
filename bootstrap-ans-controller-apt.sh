@@ -33,6 +33,9 @@ find deb-build -name "ansible*deb" -exec dpkg -i '{}' \;
 # we set the owner of ~/.ansible to current user
 me="$(who am i | awk '{print $1}')"
 chown -R $me ~/.ansible
+# we install aws-cli
+$(which pip) install awscli
+$(which pip) install --upgrade awscli
 
 echo "[+] DOne."
 
