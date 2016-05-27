@@ -21,7 +21,6 @@ $(which pip) install paramiko PyYAML jinja2 httplib2
 $(which pip) install pip --upgrade
 echo "[+] installing ansible from github .."
 cd /usr/local/src
-# we now drop privileges, no root for these steps
 $(which git) clone git://github.com/ansible/ansible.git --recursive
 cd /usr/local/src/ansible
 echo "[+] we checkout the latest stable branch .."
