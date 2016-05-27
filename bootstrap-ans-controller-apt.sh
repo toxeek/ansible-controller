@@ -21,15 +21,20 @@ $(which pip) install paramiko PyYAML jinja2 httplib2
 $(which pip) install pip --upgrade
 echo "[+] installing ansible from github .."
 cd /usr/local/src
+# we now drop privileges, no root for these steps
 $(which git) clone git://github.com/ansible/ansible.git --recursive
-echo "[+] we checkout the latest stable branch .."
-$LATEST_STABLE="$(git branch -a | grep stable | awk -F"/" '{print $NF}' | sort -u | tail -1)"
-$(which git) checkout $LATEST_STABLE
 cd /usr/local/src/ansible
+echo "[+] we checkout the latest stable branch .."
+LATEST_STABLE="$(git branch -a | grep stable | awk -F"/" '{print $NF}' | sort -u | tail -1)"
+$(which git) checkout $LATEST_STABLE
 echo "[+] making the deb file for dpkg .."
 $(which make) "deb"
 echo "[+] installing the deb file .."
 find deb-build -name "ansible*deb" -exec dpkg -i '{}' \;
+# we set the owner of ~/.ansible to current user
+me="$(who am i | awk '{print $1}')"
+chown -R $me ~/.ansible
+
 echo "[+] DOne."
 
 exit 0
