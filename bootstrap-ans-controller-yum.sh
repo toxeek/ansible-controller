@@ -30,9 +30,11 @@ $(which git) clone git://github.com/ansible/ansible.git --recursive
 cd /usr/local/src/ansible
 $(which make) "rpm"
 $YUM localinstall -y "rpm-build"/ansible-*[0-9].noarch.rpm
+echo "[+] install aws-cli and boto .."
 # we install aws-cli
 $(which pip) install awscli
 $(which pip) install --upgrade awscli
+$(which pip) install boto
 
 echo "[+] DOne."
 
