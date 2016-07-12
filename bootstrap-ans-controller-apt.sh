@@ -15,7 +15,7 @@ exec > >(tee "../out_log")
 APT=$(which apt)
 
 echo "[+] install python and dependencies .."
-$APT -y install python python-devel python-pip asciidoc git curl wget gcc python-yaml sshpass
+$APT -y install python python-dev python-pip asciidoc git curl wget gcc python-yaml sshpass
 echo "[+] install apache-libcloud dependency .."
 $(which pip) install paramiko PyYAML jinja2 httplib2
 $(which pip) install pip --upgrade
