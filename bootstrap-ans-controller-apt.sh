@@ -13,6 +13,8 @@ exec > >(tee "../out_log")
 
 APT=$(which apt)
 
+echo "[+] updating the system .."
+$APT update
 echo "[+] install python and dependencies .."
 $APT -y install python python-dev python-pip asciidoc git curl wget gcc python-yaml sshpass
 echo "[+] install apache-libcloud dependency .."
