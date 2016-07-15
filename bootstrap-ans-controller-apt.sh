@@ -16,9 +16,9 @@ APT=$(which apt)
 echo "[+] updating the system .."
 $APT update
 echo "[+] install python and dependencies .."
-$APT -y install python python-dev python-pip asciidoc git curl wget gcc python-yaml sshpass
+$APT -y install python python-dev python-pip asciidoc git curl wget gcc python-yaml sshpass python-jinja2 python-paramiko python-httplib2 python-crypto
 echo "[+] install apache-libcloud dependency .."
-$(which pip) install paramiko PyYAML jinja2 httplib2
+# $(which pip) install paramiko PyYAML jinja2
 $(which pip) install pip --upgrade
 echo "[+] installing ansible from github .."
 cd /usr/local/src
