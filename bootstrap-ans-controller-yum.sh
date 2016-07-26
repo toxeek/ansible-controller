@@ -17,19 +17,17 @@ YUM=$(which yum)
 echo "[+] install epel-release .."
 $YUM -y install epel-release >/dev/null
 echo "[+] install python and dependencies .."
-$YUM -y install python python-devel python-pip asciidoc git rpm-build python2-devel curl wget gcc
+$YUM -y install openssl-devel make python python-devel python-pip asciidoc git rpm-build python2-devel curl wget gcc
 echo "[+] install apache-libcloud dependency .."
-$(which pip) install paramiko PyYAML jinja2 httplib2
+$(which pip) install paramiko PyYAML jinja2
 echo "[+] install apache-libcloud from github .."
-$YUM -y remove ansible apache-libcloud 
 $(which pip) install pip --upgrade
-$(which pip) install apache-libcloud --upgrade
 echo "[+] installing ansible from github .."
 cd /usr/local/src
 $(which git) clone git://github.com/ansible/ansible.git --recursive
 cd /usr/local/src/ansible
 $(which make) "rpm"
-$YUM localinstall -y "rpm-build"/ansible-*[0-9].noarch.rpm
+$YUM localinstall -y "rpm-build"/ansible*noarch.rpm
 echo "[+] install aws-cli and boto .."
 # we install aws-cli
 $(which pip) install awscli
@@ -39,4 +37,3 @@ $(which pip) install boto
 echo "[+] DOne."
 
 exit 0
-
